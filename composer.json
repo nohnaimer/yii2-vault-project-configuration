@@ -1,0 +1,42 @@
+{
+    "name": "nohnaimer/yii2-vault-project-configuration",
+    "description": "This extension helps you to easily store and retrieve settings for your project with Hashicorp Vault backend.",
+    "keywords": [
+        "yii2",
+        "extension",
+        "settings",
+        "config",
+        "hashicorp",
+        "vault"
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "homepage": "https://github.com/nohnaimer/yii2-vault-project-configuration",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Maksim Astapenko",
+            "email": "actapenko@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "2.0.*",
+        "lav45/yii2-settings": "1.4.*"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "files": [ "src/config.php" ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

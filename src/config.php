@@ -1,0 +1,47 @@
+<?php
+
+if (!function_exists('config')) {
+    /**
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     */
+    function config($key, $default = null)
+    {
+        if (YII_ENV_DEV) {
+            return  $default;
+        }
+
+        return settings()->get("{$key}", $default);
+    }
+}
+
+if (!function_exists('settings')) {
+    /**
+     * @return \lav45\settings\Settings
+     */
+    function settings()
+    {
+        static $model;
+
+        if ($model !== null) {
+            return $model;
+        }
+
+        $model = new lav45\settings\Settings([
+            'serializer' => false,
+            'buildKey' => false,
+            'storage' => [
+                'class' => 'lav45\settings\storage\VaultStorage',
+                'client' => [
+                    'class' => 'lav45\settings\storage\vault\Client',
+                    'url' => getenv('VAULT_URL'),
+                    'token' => getenv('VAULT_TOKEN'),
+                    'kvPath' => getenv('VAULT_KV_PATH') ?: 'kv',
+                ],
+            ],
+        ]);
+
+        return $model;
+    }
+}
