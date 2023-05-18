@@ -30,11 +30,13 @@ in ```require``` section in `composer.json` file.
 
 ## Configuration
 
+For store php-fpm environment variables from system (macOS, Linux, Unix) need to uncomment clear_env = no string in /etc/php/php-fpm.d/www.conf 
+
 Need add environment variables:
 ```yaml
 VAULT_URL=https://vault.url/
 VAULT_TOKEN=token
-VAULT_KV_PATH=kv
+VAULT_KV_PATH=/kv
 ```
 
 docker-compose example:
@@ -94,7 +96,7 @@ class m221103_161325_vault_init extends Migration
         $client = new Client();
         $client->url = 'url';
         $client->token = 'token';
-        $client->kvPath = 'kv';
+        $client->kvPath = '/kv';
 
         $model = new VaultStorage();
         $model->client = $client;
@@ -117,7 +119,7 @@ return [
                 'class' => lav45\settings\storage\vault\Client::class,
                 'url' => 'url',
                 'token' => 'token',
-                'kvPath' => 'kv',
+                'kvPath' => '/kv',
             ],
         ],
     ],

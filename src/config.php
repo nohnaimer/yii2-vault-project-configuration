@@ -32,12 +32,12 @@ if (!function_exists('settings')) {
             'serializer' => false,
             'buildKey' => false,
             'storage' => [
-                'class' => 'lav45\settings\storage\VaultStorage',
+                'class' => lav45\settings\storage\VaultStorage::class,
                 'client' => [
-                    'class' => 'lav45\settings\storage\vault\Client',
+                    'class' => lav45\settings\storage\vault\Client::class,
                     'url' => getenv('VAULT_URL'),
                     'token' => getenv('VAULT_TOKEN'),
-                    'kvPath' => getenv('VAULT_KV_PATH') ?: 'kv',
+                    'kvPath' => getenv('VAULT_KV_PATH') ?: '/kv',
                 ],
             ],
         ]);
