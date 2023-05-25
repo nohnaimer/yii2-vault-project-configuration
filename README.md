@@ -93,19 +93,21 @@ class m221103_161325_vault_init extends Migration
      */
     public function safeUp()
     {
-        $client = new Client();
-        $client->url = 'url';
-        $client->token = 'token';
-        $client->kvPath = '/kv';
+        $client = new Client([
+            'url' => 'url',
+            'token' => 'token',
+            'kvPath' => '/kv',
+        ]);
 
-        $model = new VaultStorage();
-        $model->client = $client;
+        $vault = new VaultStorage([
+            'client' => $client,
+        ]);
         
         //add
-        $model->setValue('/my/secret/key', 'value');
+        $vault->setValue('/my/secret/key', 'value');
         
         //delete
-        $model->deleteValue('/my/secret/key');
+        $vault->deleteValue('/my/secret/key');
     }
 }
 ```
