@@ -35,7 +35,7 @@ if (!function_exists('settings')) {
                 'class' => lav45\settings\storage\VaultStorage::class,
                 'client' => [
                     'class' => lav45\settings\storage\vault\Client::class,
-                    'url' => getenv('VAULT_URL'),
+                    'url' => getenv('VAULT_ADDR'),
                     'token' => getenv('VAULT_TOKEN'),
                     'kvPath' => getenv('VAULT_KV_PATH') ?: '/kv',
                 ],

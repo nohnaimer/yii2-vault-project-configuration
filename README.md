@@ -34,7 +34,7 @@ For store php-fpm environment variables from system (macOS, Linux, Unix) need to
 
 Need add environment variables:
 ```yaml
-VAULT_URL=https://vault.url/
+VAULT_ADDR=https://vault.url/
 VAULT_TOKEN=token
 VAULT_KV_PATH=/kv
 ```
@@ -48,7 +48,7 @@ php:
   restart: on-failure
   working_dir: /var/www
   environment:
-    VAULT_URL: https://127:0:0:1:8200/
+    VAULT_ADDR: https://127:0:0:1:8200/
     VAULT_TOKEN: hvs.hrpvk3rEpD2HaHckeb976Ppw
   volumes:
     - .:/var/www:cached
