@@ -22,7 +22,7 @@ or add
 
 ```
 "require": {
-    "nohnaimer/yii2-vault-project-configuration": "1.0.*"
+    "nohnaimer/yii2-vault-project-configuration": "0.1.*"
 }
 ```
 
@@ -116,9 +116,9 @@ Or if you configure vault in project like this:
 return [
     'components' => [
         'vault' => [
-            'class' => lav45\settings\storage\VaultStorage::class,
+            'class' => nohnaimer\config\storage\VaultStorage::class,
             'client' => [
-                'class' => lav45\settings\storage\vault\Client::class,
+                'class' => nohnaimer\config\storage\vault\Client::class,
                 'url' => 'url',
                 'token' => 'token',
                 'kvPath' => '/kv',
