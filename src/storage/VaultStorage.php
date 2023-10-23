@@ -4,6 +4,7 @@ namespace nohnaimer\config\storage;
 
 use yii\di\Instance;
 use yii\base\BaseObject;
+use lav45\settings\storage\StorageInterface;
 use nohnaimer\config\storage\vault\services\KVInterface;
 
 /**
