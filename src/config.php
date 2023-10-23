@@ -33,11 +33,14 @@ if (!function_exists('settings')) {
             'buildKey' => false,
             'storage' => [
                 'class' => nohnaimer\config\storage\VaultStorage::class,
-                'client' => [
-                    'class' => nohnaimer\config\storage\vault\Client::class,
-                    'url' => getenv('VAULT_ADDR'),
-                    'token' => getenv('VAULT_TOKEN'),
-                    'kvPath' => getenv('VAULT_KV_PATH') ?: '/kv',
+                'kv' => [
+                    'class' => nohnaimer\config\storage\vault\services\KVv1::class,
+                    'path' => getenv('VAULT_KV_PATH') ?: '/kv',
+                    'client' => [
+                        'class' => nohnaimer\config\storage\vault\Client::class,
+                        'url' => getenv('VAULT_ADDR'),
+                        'token' => getenv('VAULT_TOKEN'),
+                    ],
                 ],
             ],
         ]);

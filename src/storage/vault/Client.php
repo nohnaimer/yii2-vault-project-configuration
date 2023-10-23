@@ -152,15 +152,15 @@ class Client extends BaseObject
         } catch (\Throwable $exception) {
             $dto = $this->createError($exception, $exception->getCode(), $exception->getMessage(), $url);
             Yii::info($dto->toArray(), __METHOD__);
-            return $dto;
+            return false;
         }
 
         if (400 <= $response->getStatusCode()) {
             $message = sprintf('Something went wrong when calling Hashicorp Vault (%s - %s).', $response->getStatusCode(), $this->getMessage($response->getContent()));
 
-            $dto = $this->createError($response, $response->getCode(), $message, $request->getFullUrl());
+            $dto = $this->createError($response, $response->getStatusCode(), $message, $request->getFullUrl());
             Yii::info($dto->toArray(), __METHOD__);
-            return $dto;
+            return false;
         }
 
         return $response->getData();

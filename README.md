@@ -96,11 +96,15 @@ class m221103_161325_vault_init extends Migration
         $client = new Client([
             'url' => 'url',
             'token' => 'token',
-            'kvPath' => '/kv',
+        ]);
+
+        $kv = new KVv1([
+            'path' => '/kv',
+            'client' => $client,
         ]);
 
         $vault = new VaultStorage([
-            'client' => $client,
+            'kv' => $kv,
         ]);
         
         //add
@@ -117,11 +121,14 @@ return [
     'components' => [
         'vault' => [
             'class' => nohnaimer\config\storage\VaultStorage::class,
-            'client' => [
-                'class' => nohnaimer\config\storage\vault\Client::class,
-                'url' => 'url',
-                'token' => 'token',
-                'kvPath' => '/kv',
+            'kv' => [
+                'class' => nohnaimer\config\storage\vault\services\KVv1::class,
+                'path' => '/kv',
+                'client' => [
+                    'class' => nohnaimer\config\storage\vault\Client::class,
+                    'url' => 'url',
+                    'token' => 'token',
+                ],
             ],
         ],
     ],
