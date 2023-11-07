@@ -4,8 +4,8 @@ namespace nohnaimer\config\storage;
 
 use yii\di\Instance;
 use yii\base\BaseObject;
+use nohnaimer\vault\services\KVInterface;
 use lav45\settings\storage\StorageInterface;
-use nohnaimer\config\storage\vault\services\KVInterface;
 
 /**
  * Class VaultStorage
@@ -77,7 +77,7 @@ class VaultStorage extends BaseObject implements StorageInterface
      */
     private function getKeySecret(string $key)
     {
-        $data = explode('/', $key);
+        $data = explode('.', $key);
 
         return [
             array_pop($data),

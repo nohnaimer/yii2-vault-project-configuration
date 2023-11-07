@@ -62,22 +62,23 @@ And need to init key value storage in Hashicorp Vault use api or web gui with VA
 ## Using
 
 ```php
-$db_name = config('/db_name', 'site-db-name');
-$db_host = config('/db_host', 'localhost');
+$db_name = config('db.name', 'site-db-name');
+$db_host = config('db.host', 'localhost');
 
 return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
             'dsn' => "mysql:host={$db_host};dbname={$db_name}",
-            'username' => config('/db_username', 'root'),
-            'password' => config('/db_password', '****'),
+            'username' => config('db.username', 'root'),
+            'password' => config('db.password', '****'),
             'enableSchemaCache' => true,
             'charset' => 'utf8',
         ],
     ],
 ];
 ```
+Where is secret /kv/db and key name, host, username, password. Delimiter - . 
 
 ## Management
 
@@ -85,37 +86,6 @@ Use yii2-setting classes to add or delete data from vault use yii2 migrations.
 
 ### Use yii2 migrations
 
-```php
-class m221103_161325_vault_init extends Migration
-{
-    /**
-     * {@inheritdoc}
-     */
-    public function safeUp()
-    {
-        $client = new Client([
-            'url' => 'url',
-            'token' => 'token',
-        ]);
-
-        $kv = new KVv1([
-            'path' => '/kv',
-            'client' => $client,
-        ]);
-
-        $vault = new VaultStorage([
-            'kv' => $kv,
-        ]);
-        
-        //add
-        $vault->setValue('/my/secret/key', 'value');
-        
-        //delete
-        $vault->deleteValue('/my/secret/key');
-    }
-}
-```
-Or if you configure vault in project like this:
 ```php
 return [
     'components' => [

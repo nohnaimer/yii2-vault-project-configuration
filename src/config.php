@@ -34,10 +34,10 @@ if (!function_exists('settings')) {
             'storage' => [
                 'class' => nohnaimer\config\storage\VaultStorage::class,
                 'kv' => [
-                    'class' => nohnaimer\config\storage\vault\services\KVv1::class,
+                    'class' => nohnaimer\vault\services\KVv1::class,
                     'path' => getenv('VAULT_KV_PATH') ?: '/kv',
                     'client' => [
-                        'class' => nohnaimer\config\storage\vault\Client::class,
+                        'class' => nohnaimer\vault\Client::class,
                         'url' => getenv('VAULT_ADDR'),
                         'token' => getenv('VAULT_TOKEN'),
                     ],
