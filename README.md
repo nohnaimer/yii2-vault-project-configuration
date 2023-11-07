@@ -92,10 +92,10 @@ return [
         'vault' => [
             'class' => nohnaimer\config\storage\VaultStorage::class,
             'kv' => [
-                'class' => nohnaimer\config\storage\vault\services\KVv1::class,
+                'class' => nohnaimer\vault\services\KVv1::class,
                 'path' => '/kv',
                 'client' => [
-                    'class' => nohnaimer\config\storage\vault\Client::class,
+                    'class' => nohnaimer\vault\Client::class,
                     'url' => 'url',
                     'token' => 'token',
                 ],
