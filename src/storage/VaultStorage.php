@@ -72,16 +72,16 @@ class VaultStorage extends BaseObject implements StorageInterface
     }
 
     /**
-     * @param string $key
+     * @param string $value
      * @return array
      */
-    private function getKeySecret(string $key)
+    private function getKeySecret(string $value)
     {
-        $data = explode('.', $key);
+        $data = explode('.', $value);
 
-        return [
-            array_pop($data),
-            implode('/', $data),
-        ];
+        $key = array_pop($data);
+        $path = '/' . implode('/', $data);
+
+        return [$key, $path];
     }
 }
