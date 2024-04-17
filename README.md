@@ -61,6 +61,13 @@ And need to init key value storage in Hashicorp Vault use api or web gui with VA
 
 ## Using
 
+bootstrap.php
+```php
+...
+const PROJECT_CONFIGURATION_USE_DEFAULT = YII_ENV_DEV;
+...
+```
+
 ```php
 $db_name = config('db.name', 'site-db-name');
 $db_host = config('db.host', 'localhost');

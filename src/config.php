@@ -1,5 +1,7 @@
 <?php
 
+const PROJECT_CONFIGURATION_USE_DEFAULT = false;
+
 if (!function_exists('config')) {
     /**
      * @param string $key
@@ -8,7 +10,7 @@ if (!function_exists('config')) {
      */
     function config($key, $default = null)
     {
-        if (YII_ENV_DEV) {
+        if (PROJECT_CONFIGURATION_USE_DEFAULT) {
             return  $default;
         }
 
